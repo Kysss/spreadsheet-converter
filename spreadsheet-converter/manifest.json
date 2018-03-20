@@ -1,0 +1,31 @@
+{
+    "manifest_version": 2,
+
+    "name": "Google Spreadsheet Display",
+    "description": "This chrome extension displays a Google Spreadsheet using JSON data in a nice and clean format.",
+    "version": "1.1",
+	"background": {
+		"scripts": ["background.js"]
+		//"page": "display.html"
+	},
+    "browser_action": {
+        "default_icon": "donut.png"
+    },
+	
+	/* CORS issues - giving permission 
+	** https://developer.chrome.com/apps/xhr
+	*/ 
+	"permissions":[
+			"tabs",
+			"<all_urls>"
+	],
+	
+	"content_scripts": [{
+      "matches": ["https://docs.google.com/spreadsheets/*"],
+      "js": ["jquery.js", "content.js"]
+	  /*,
+	  "css": ["mystyles.css"]*/
+	  
+    }]
+}
+
